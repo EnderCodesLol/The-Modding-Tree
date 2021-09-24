@@ -1,13 +1,13 @@
 let modInfo = {
 	name: "The Music Tree",
 	id: "musicisfun101lol",
-	author: "nobody",
-	pointsName: "points",
+	author: "EnderCodesLol",
+	pointsName: "Notes",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
-	initialStartPoints: new Decimal (10), // Used for hard resets and new players
+	initialStartPoints: new Decimal (0), // Used for hard resets and new players
 	offlineLimit: 1,  // In hours
 }
 
@@ -43,6 +43,9 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
+	if (hasUpgrade('p', 11)) gain = gain.times(2)
+	if (hasUpgrade('p', 12)) gain = gain.times(2)
+	if (hasUpgrade('p', 13)) gain = gain.times(upgradeEffect('p', 13))
 	return gain
 }
 
